@@ -13,7 +13,7 @@
     "generators": [
       {
         "name": "atd_t",
-        "edge": ["Foo_t.ml", "Foo_t.mli", ":", "Foo.atd"]
+        "edge": ["atd/Foo_t.ml", "atd/Foo_t.mli", ":", "atd/Foo.atd"]
       }
     ]
   },
