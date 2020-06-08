@@ -8,3 +8,4 @@
 .bsb.lock
 **/*.bs.js
 
+/gen/*.ml*

@@ -1,22 +1,24 @@
 {
   "name": "my-new-project",
   "version": "0.1.0",
-  "generators": [
+  "generators":  [
     {
       "name": "atd_t",
-      "command": "yarn run atdgen -t $in"
+      "command": "part1=$$(dirname $in) && part2=$$(basename $in .atd) && yarn run atdgen -t $in -o $$part1/../gen/$$part2"
     }
   ],
-  "sources": {
-    "dir" : "src",
-    "subdirs" : true,
-    "generators": [
-      {
-        "name": "atd_t",
-        "edge": ["atd/Foo_t.ml", "atd/Foo_t.mli", ":", "atd/Foo.atd"]
-      }
-    ]
-  },
+  "sources": [
+    "src",
+    {
+      "dir": "gen",
+      "generators": [
+        {
+          "name": "atd_t",
+          "edge": ["Foo_t.ml", "Foo_t.mli", ":", "../src/Foo.atd"]
+        }
+      ]
+    }
+  ],
   "package-specs": {
     "module": "commonjs",
     "in-source": true
@@ -24,7 +26,7 @@
   "suffix": ".bs.js",
   "bs-dependencies": [],
   "warnings": {
-    "error" : "+101"
+    "error": "+101"
   },
   "namespace": true,
   "refmt": 3
